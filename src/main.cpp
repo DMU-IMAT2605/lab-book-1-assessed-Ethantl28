@@ -123,7 +123,7 @@ int main() //!< Entry point for the application
 	Triangle classTriangle(sf::Vector2f(600, 600), sf::Vector2f(700, 700), sf::Vector2f(600, 700));
 
 	//Class circle
-	Circle classCircle(sf::Vector2f(100, 100), 100);
+	Circle classCircle(sf::Vector2f(500, 500), 100, 200);
 
 
 	while (window.isOpen())

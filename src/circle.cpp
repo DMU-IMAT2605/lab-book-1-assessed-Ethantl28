@@ -19,7 +19,7 @@ Circle::Circle()
 
 Circle::Circle(sf::Vector2f centre, int radius)
 {
-	arr.resize(points);
+	arr.resize(points + 1);
 	arr.setPrimitiveType(sf::LineStrip);
 	inc = 2 * pi / points;
 
@@ -35,7 +35,7 @@ Circle::Circle(sf::Vector2f centre, int radius)
 
 Circle::Circle(sf::Vector2f centre, int radiusX, int radiusY)
 {
-	arr.resize(points);
+	arr.resize(points + 1);
 	arr.setPrimitiveType(sf::LineStrip);
 	inc = 2 * pi / points;
 

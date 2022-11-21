@@ -17,6 +17,7 @@
 #include "line.h"
 #include "triangle.h"
 #include "circle.h"
+#include "square.h"
 
 const float pi = 3.141;			//using const because pi never changes
 
@@ -82,14 +83,13 @@ int main() //!< Entry point for the application
 	circle.resize(n + 1);
 	circle.setPrimitiveType(sf::LineStrip);
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)						//Use <= to connect last point to first point instead of adding line of code after loop
 	{
 		float x = centre.x + cos(theta) * radius;		//Work out the new x coordinate for the line
 		float y = centre.y + sin(theta) * radius;		//Work out the new y coordinate for the line
 		theta = theta + inc;							//Update theta so we can work out the next iteration 
 		circle[i] = sf::Vector2f(x, y);					//Updated the actual location using the x and y values calculated earlier
 	}
-	circle[n] = circle[0];								//This connects the last vertex in the shape to the first one so there is no gap
 
 
 
@@ -105,14 +105,13 @@ int main() //!< Entry point for the application
 	elipse.resize(elipseN + 1);
 	elipse.setPrimitiveType(sf::LineStrip);
 
-	for (int i = 0; i < elipseN; i++)
+	for (int i = 0; i <= elipseN; i++)					//Use <= to connect last point to first point instead of adding line of code after loop
 	{
 		float x = elipseCentre.x + cos(elipseTheta) * elipseRadiusX;		//Work out the new x coordinate for the line
 		float y = elipseCentre.y + sin(elipseTheta) * elipseRadiusY;		//Work out the new y coordinate for the line
 		elipseTheta = elipseTheta + elipseInc;								//Update theta so we can work out the next iteration 
 		elipse[i] = sf::Vector2f(x, y);										//Updated the actual location using the x and y values calculated earlier
-	}
-	elipse[n] = elipse[0];								//This connects the last vertex in the shape to the first one so there is no gap
+	}								
 
 
 
@@ -123,7 +122,13 @@ int main() //!< Entry point for the application
 	Triangle classTriangle(sf::Vector2f(600, 600), sf::Vector2f(700, 700), sf::Vector2f(600, 700));
 
 	//Class circle
-	Circle classCircle(sf::Vector2f(500, 500), 100, 200);
+	Circle classCircle(sf::Vector2f(500, 500), 100);
+
+	//Class oval
+	Circle classOval(sf::Vector2f(500, 600), 200, 100);
+
+	//Class Square
+	Square* classSquare = new Square(sf::Vector2f(800, 700), 50);
 
 
 	while (window.isOpen())
@@ -148,6 +153,8 @@ int main() //!< Entry point for the application
 		window.draw(classLine);
 		window.draw(classTriangle);
 		window.draw(classCircle);
+		window.draw(classOval);
+		window.draw(*classSquare);
 
 		window.display();
 	}
